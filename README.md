@@ -17,6 +17,15 @@ Import in HTML pages:
 <script src="https://cdn.jsdelivr.net/npm/opencc-js@1.0.3/bundle-browser.min.js"></script><!-- Required -->
 ```
 
+or
+
+```html
+<script src="https://como65416.github.io/opencc-js/data.js"></script>          <!-- Required -->
+<script src="https://como65416.github.io/opencc-js/data.cn2t.js"></script>     <!-- For Simplified to Traditional -->
+<script src="https://como65416.github.io/opencc-js/data.t2cn.js"></script>     <!-- For Traditional Chinese to Simplified Chinese -->
+<script src="https://como65416.github.io/opencc-js/bundle-browser.js"></script>    <!-- Required -->
+```
+
 **Import opencc-js in Node.js script**
 
 ```sh
@@ -82,6 +91,6 @@ HTMLConvertHandler.restore(); // Restore  -> 漢語
   * default: `[]`
   * syntax : `[  ['item1','replacement1'], ['item2','replacement2'], … ]`
 * `.HTMLConverter(converter, rootNode, langAttrInitial, langAttrNew )` : uses previously defined converter() to converts all HTML elements text content from a starting root node and down, into the target local. Also converts all attributes `lang` from existing `langAttrInitial` to `langAttrNew` values.
-* `lang` attributes : html attribute defines the languages of the text content to the browser, at start (`langAttrInitial`) and after conversion (`langAttrNew`). 
+* `lang` attributes : html attribute defines the languages of the text content to the browser, at start (`langAttrInitial`) and after conversion (`langAttrNew`).
   * syntax convention: [IETF languages codes](https://www.w3.org/International/articles/bcp47/#macro), mainly `zh-TW`, `zh-HK`, `zh-CN`, `zh-SG`,…
-* `ignore-opencc` : html class signaling an element and its sub-nodes will not be converted. 
+* `ignore-opencc` : html class signaling an element and its sub-nodes will not be converted.
