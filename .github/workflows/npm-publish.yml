@@ -5,7 +5,7 @@ on:
     types: [created]
 
 jobs:
-  publish-npm:
+  publish-github-pages:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -13,13 +13,23 @@ jobs:
       with:
         node-version: 14
         registry-url: https://registry.npmjs.org/
+
     - name: Install bundler
       run: npm install -g rollup
+
     - name: Install dependencies
       run: npm ci
+
     - name: Build & Test
       run: ./buildAndTest.sh
-    - name: Publish
-      run: npm publish
-      env:
-        NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+
+    - name: Build & Test
+      run: mkdir build
+      run: mv data.* build/.
+      run: ls
+
+    - name: Deploy
+      uses: JamesIves/github-pages-deploy-action@4.1.4
+      with:
+        branch: gh-pages
+        folder: build
